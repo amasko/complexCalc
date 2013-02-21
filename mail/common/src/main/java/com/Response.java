@@ -1,3 +1,7 @@
+package com;
+
+import com.sun.xml.internal.bind.v2.TODO;
+
 import java.io.Serializable;
 
 /**
@@ -8,7 +12,7 @@ import java.io.Serializable;
  * To change this template use File | Settings | File Templates.
  */
 public class Response implements Serializable {
-
+    //TODO: implement properly!
     private String message;
     private int data;
 
@@ -34,7 +38,6 @@ public class Response implements Serializable {
         return data;
     }
 
-    @Override
     public String toString() {
         return message + " " + data + " ;";
     }

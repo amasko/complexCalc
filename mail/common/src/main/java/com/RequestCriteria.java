@@ -1,11 +1,13 @@
-package db.managers;
+package com;
 
 /**
  * Created with IntelliJ IDEA.
  * User: Alex
- * Date: 13.02.13
- * Time: 15:01
+ * Date: 21.02.13
+ * Time: 12:50
  * To change this template use File | Settings | File Templates.
  */
-public interface UserManager {
+public enum RequestCriteria {
+    CREATE_ACCOUNT,
+    SEND_LETTER
 }

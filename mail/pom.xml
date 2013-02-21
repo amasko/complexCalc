@@ -8,60 +8,39 @@
     <artifactId>mail-service</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+
     <modules>
         <module>common</module>
         <module>server</module>
         <module>client</module>
     </modules>
 
+
     <properties>
-        <org.hibernate.version>3.3.0.ga</org.hibernate.version>
+        <org.hibernate.version>4.1.9.Final</org.hibernate.version>
         <org.slf4j.version>1.4.3</org.slf4j.version>
         <javassist.version>3.4.GA</javassist.version>
-        <mysql.connector.version>5.1.9</mysql.connector.version>
+        <mysql.connector.version>5.1.22</mysql.connector.version>
         <javax.persistence.version>1.0</javax.persistence.version>
         <common.codec.version>1.7</common.codec.version>
+
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <dependencyManagement>
         <dependencies>
-            <!--Hibernate framework-->
             <dependency>
                 <groupId>org.hibernate</groupId>
-                <artifactId>hibernate-core</artifactId>
+                <artifactId>hibernate-entitymanager</artifactId>
                 <version>${org.hibernate.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.hibernate</groupId>
-                <artifactId>hibernate-annotations</artifactId>
-                <version>${org.hibernate.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.hibernate</groupId>
-                <artifactId>hibernate-commons-annotations</artifactId>
-                <version>${org.hibernate.version}</version>
-            </dependency>
-
-            <!-- Hibernate uses slf4j for logging -->
-            <dependency>
-                <groupId>org.slf4j</groupId>
-                <artifactId>slf4j-simple</artifactId>
-                <version>${org.slf4j.version}</version>
-            </dependency>
-
-            <!-- Hibernate gives you a choice of bytecode providers between cglib and javassist -->
-            <dependency>
-                <groupId>javassist</groupId>
-                <artifactId>javassist</artifactId>
-                <version>${javassist.version}</version>
             </dependency>
 
             <!--Javax persistence API-->
-            <dependency>
-                <groupId>javax.persistence</groupId>
-                <artifactId>persistence-api</artifactId>
-                <version>${javax.persistence.version}</version>
-            </dependency>
+            <!--<dependency>-->
+                <!--<groupId>javax.persistence</groupId>-->
+                <!--<artifactId>persistence-api</artifactId>-->
+                <!--<version>${javax.persistence.version}</version>-->
+            <!--</dependency>-->
 
             <!-- MySQL database driver -->
             <dependency>
@@ -69,15 +48,25 @@
                 <artifactId>mysql-connector-java</artifactId>
                 <version>${mysql.connector.version}</version>
             </dependency>
-
-            <!-- Crypt lib -->
-            <dependency>
-                <groupId>commons-codec</groupId>
-                <artifactId>commons-codec</artifactId>
-                <version>${common.codec.version}</version>
-            </dependency>
         </dependencies>
     </dependencyManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.3.2</version>
+                <configuration>
+                    <source>1.6</source>
+                    <target>1.6</target>
+                    <compilerArguments>
+                        <!--<endorseddirs>${endorsed.dir}</endorseddirs>-->
+                    </compilerArguments>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 
 </project>

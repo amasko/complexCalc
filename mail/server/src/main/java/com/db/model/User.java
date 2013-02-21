@@ -1,4 +1,4 @@
-package db.model;
+package com.db.model;
 
 import javax.persistence.*;
 
@@ -11,7 +11,6 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "USERS")
-@UniqueConstraint(columnNames = "LOGIN")
 public class User {
 
     @Id
@@ -19,15 +18,32 @@ public class User {
     @Column(name = "ID")
     private Long id;
 
+    @OneToOne(mappedBy = "user")
+    private Address address;
+
     @Column(name = "NAME", nullable = false)
     private String name;
 
     @Column(name = "SURNAME", nullable = false)
-    private String password;
-
+    private String surname;
 
     @Column(name = "BIRTH_DATE")
     private String birthDate;
+
+    @Column(name = "PHONE_NUMBER")
+    private String phone;
+
+    @Column(name = "PASSWORD", nullable = false)
+    private String password;
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getPhone() {
+
+        return phone;
+    }
 
     public Long getId() {
         return id;
@@ -35,6 +51,10 @@ public class User {
 
     public String getName() {
         return name;
+    }
+
+    public String getSurname() {
+        return surname;
     }
 
     public String getPassword() {
@@ -53,6 +73,10 @@ public class User {
         this.name = name;
     }
 
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
     public void setPassword(String password) {
         this.password = password;
     }
@@ -60,4 +84,13 @@ public class User {
     public void setBirthDate(String birthDate) {
         this.birthDate = birthDate;
     }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
 }

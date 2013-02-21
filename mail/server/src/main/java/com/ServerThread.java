@@ -1,3 +1,7 @@
+package com;
+
+
+
 import java.io.*;
 import java.net.Socket;
 
@@ -13,19 +17,19 @@ public class ServerThread extends Thread {
     private Socket socket = null;
 
     public ServerThread(Socket socket) throws IOException {
-        super("ServerThread");
+        super("com.ServerThread");
         this.socket = socket;
     }
 //    }
 
     /*
-    private Request getRequest() {
+    private com.Request getRequest() {
 
         ObjectInputStream ois = null;
-        Request request = new Request();
+        com.Request request = new com.Request();
         try {
             ois = new ObjectInputStream(new BufferedInputStream(socket.getInputStream()));
-            request = (Request) ois.readObject();
+            request = (com.Request) ois.readObject();
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -51,12 +55,12 @@ public class ServerThread extends Thread {
         ObjectOutputStream oos = null;
         ObjectInputStream ois = null;
         Request request;
-
+        Response response;
         try {
             ois = new ObjectInputStream(new BufferedInputStream(socket.getInputStream()));
             request = (Request) ois.readObject();
             System.out.println(request);
-
+            response = (new RequestHandler(request)).handleRequest();
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -64,8 +68,9 @@ public class ServerThread extends Thread {
             e.printStackTrace();
         }
 
-        System.out.println(socket.isClosed());
-        Response response = new Response();
+        //System.out.println(socket.isClosed());
+
+        response = new Response();
         try {
             oos = new ObjectOutputStream(new BufferedOutputStream(socket.getOutputStream()));
             oos.writeObject(response);

@@ -1,7 +1,11 @@
+package com;
 
 import java.io.*;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.util.ArrayList;
+import java.util.List;
+
 
 /**
  * Created with IntelliJ IDEA.
@@ -15,9 +19,19 @@ public class Application {
     public static void main(String args[]) throws IOException {
 
         Socket socket = null;
-        Request request = new Request("hzop", 2);
+
         Response response;
 
+        List<String> list = new ArrayList<String>();
+        list.add("koya");
+        list.add("petrov");
+        list.add("12/12/12");
+        list.add("123456");
+        list.add("kolyapetrov");
+        list.add("ololo");
+        list.add("11/11/11");
+
+        Request request = new Request(RequestCriteria.CREATE_ACCOUNT, list);
         ObjectOutputStream oos = null;
         ObjectInputStream ois = null;
         try {
@@ -48,6 +62,15 @@ public class Application {
                 ois.close();
             }
             socket.close();
+        }
+
+        while (true) {
+            System.out.println("Doing something useful...");
+            try {
+                Thread.sleep(3000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
 }
