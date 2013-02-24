@@ -33,9 +33,6 @@ public class User {
     @Column(name = "PHONE_NUMBER")
     private String phone;
 
-    @Column(name = "PASSWORD", nullable = false)
-    private String password;
-
     public void setPhone(String phone) {
         this.phone = phone;
     }
@@ -57,10 +54,6 @@ public class User {
         return surname;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
     public String getBirthDate() {
         return birthDate;
     }
@@ -75,10 +68,6 @@ public class User {
 
     public void setSurname(String surname) {
         this.surname = surname;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public void setBirthDate(String birthDate) {

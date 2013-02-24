@@ -22,7 +22,6 @@ public class UserManagerImpl implements UserManager {
     @Override
     public void create(User user) {
 
-        user.setPassword(DigestUtils.md5Hex(user.getPassword()));
         EntityManager em = JPAUtil.getEmf().createEntityManager();
         EntityTransaction transaction = em.getTransaction();
         transaction.begin();

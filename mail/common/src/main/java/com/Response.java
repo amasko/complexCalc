@@ -1,8 +1,7 @@
 package com;
 
-import com.sun.xml.internal.bind.v2.TODO;
-
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -12,34 +11,43 @@ import java.io.Serializable;
  * To change this template use File | Settings | File Templates.
  */
 public class Response implements Serializable {
-    //TODO: implement properly!
-    private String message;
-    private int data;
 
-    public Response() {
-        this.message = "second";
-        this.data = 15;
+    private RequestCriteria requestCriteria;
+    private List<String> list;
+    private Boolean success = false;
+
+    public Response(RequestCriteria requestCriteria, List<String> list, Boolean success) {
+        this.requestCriteria = requestCriteria;
+        this.list = list;
+        this.success = success;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public RequestCriteria getRequestCriteria() {
+        return requestCriteria;
     }
 
-    public void setData(int data) {
-        this.data = data;
+    public List<String> getList() {
+        return list;
     }
 
-    public String getMessage() {
-
-        return message;
+    public Boolean getSuccess() {
+        return success;
     }
 
-    public int getData() {
-        return data;
+    public void setRequestCriteria(RequestCriteria requestCriteria) {
+        this.requestCriteria = requestCriteria;
+    }
+
+    public void setList(List<String> list) {
+        this.list = list;
+    }
+
+    public void setSuccess(Boolean success) {
+        this.success = success;
     }
 
     public String toString() {
-        return message + " " + data + " ;";
+        return requestCriteria.toString() + "test ;";
     }
 
 }

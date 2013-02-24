@@ -54,13 +54,13 @@ public class ServerThread extends Thread {
 
         ObjectOutputStream oos = null;
         ObjectInputStream ois = null;
-        Request request;
-        Response response;
+        Request request = null;
+        Response response = null;
         try {
             ois = new ObjectInputStream(new BufferedInputStream(socket.getInputStream()));
             request = (Request) ois.readObject();
             System.out.println(request);
-            response = (new RequestHandler(request)).handleRequest();
+
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -69,8 +69,8 @@ public class ServerThread extends Thread {
         }
 
         //System.out.println(socket.isClosed());
-
-        response = new Response();
+        response = (new RequestHandler(request)).handleRequest();
+        //response = new Response();
         try {
             oos = new ObjectOutputStream(new BufferedOutputStream(socket.getOutputStream()));
             oos.writeObject(response);

@@ -22,7 +22,7 @@ public class ApplyAccountCreate {
         this.list = list;
     }
 
-    public void actionPerformed() {
+    public void accountCreate() {
 
         User user = new User();
         Address address = new Address();
@@ -34,15 +34,17 @@ public class ApplyAccountCreate {
         String login = list.get(4);
         String pass = list.get(5);
         String creation = list.get(6);
-        user.setPassword(pass);
+
         user.setName(name);
         user.setSurname(surname);
         user.setPhone(phone);
         user.setBirthDate(birthDate);
 
         address.setAddr(login + "@mailbox.ru");
+        address.setPassword(pass);
         address.setUser(user);
         address.setCreationDate(creation);
+
         UserManagerImpl.getInstance().create(user);
         AddressManagerImpl.getInstance().create(address);
     }

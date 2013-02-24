@@ -1,6 +1,7 @@
 package com;
 
 import com.db.service.ApplyAccountCreate;
+import com.db.service.ApplyLoginCheck;
 
 import java.util.List;
 
@@ -25,11 +26,15 @@ public class RequestHandler {
 
         switch (criteria) {
             case CREATE_ACCOUNT:
-                (new ApplyAccountCreate(list)).actionPerformed();
+                (new ApplyAccountCreate(list)).accountCreate();
 
                 break;
+
+            case CHECK_LOGIN:
+                return (new ApplyLoginCheck(list)).checkLogin();
+
         }
 
-        return new Response();
+        return new Response(null,null,false);
     }
 }

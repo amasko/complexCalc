@@ -9,5 +9,9 @@ package com;
  */
 public enum RequestCriteria {
     CREATE_ACCOUNT,
-    SEND_LETTER
+    CHECK_LOGIN,
+    CREATE_FOLDER,
+    REMOVE_FOLDER,
+    SEND_LETTER,
+    DELETE_LETTER
 }

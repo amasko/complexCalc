@@ -20,21 +20,26 @@ public class Address {
     @Id
     @GeneratedValue
     @Column(name = "ID")
-    private Long id;
+    protected Long id;
 
     @OneToOne
     @JoinColumn(name = "USER_ID")
-    private User user;
+    protected User user;
 
     @Column(name = "ADDR", nullable = false)
-    private String addr;
+    protected String addr;
+
+    @Column(name = "PASSWORD", nullable = false)
+    protected String password;
 
     @Column(name = "CREATION_DATE", nullable = false)
-    private String creationDate;
+    protected String creationDate;
 
     @OneToMany(mappedBy = "address", cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY, orphanRemoval = true)
-    private List<Folder> folders;
+             orphanRemoval = true)
+    protected List<Folder> folders;
+
+//    fetch = FetchType.LAZY,
 
     public Long getId() {
         return id;
@@ -76,6 +81,20 @@ public class Address {
         this.folders = folders;
     }
 
+
+    public String getPassword() {
+        return password;
+    }
+
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    @Override
+    public String toString() {
+        return addr +" "+ password +" "+ creationDate + " "+id;
+    }
     /*
     @Override
     public boolean equals(Object o) {

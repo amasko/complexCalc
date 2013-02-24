@@ -13,5 +13,7 @@ public interface AddressManager {
 
     public void create(Address address);
 
+    public Address checkAddress(String login, String password);
+
 
 }

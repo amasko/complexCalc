@@ -28,8 +28,10 @@ public class Folder {
     private Address address;
 
     @OneToMany(mappedBy = "folder", cascade = CascadeType.ALL,
-            fetch = FetchType.EAGER, orphanRemoval = true)
+            orphanRemoval = true)
     private List<Letter> letters;
+
+//    fetch = FetchType.EAGER,
     //☺
     public List<Letter> getLetters() {
         return letters;
