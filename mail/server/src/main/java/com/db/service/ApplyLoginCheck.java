@@ -3,6 +3,7 @@ package com.db.service;
 import com.Response;
 import com.db.managers.impl.AddressManagerImpl;
 import com.db.model.Address;
+import com.sun.org.apache.xalan.internal.xsltc.dom.AdaptiveResultTreeImpl;
 
 import java.net.ResponseCache;
 import java.util.List;
@@ -28,11 +29,12 @@ public class ApplyLoginCheck {
         String pass = list.get(1);
 
         Address address = AddressManagerImpl.getInstance().checkAddress(login, pass);
-        if (address==null)
-            return (new Response(null, null, false));
-        else
+        return (address == null) ? (new Response(null, null, false)) : new Response(null, null, true);
 
-        return new Response(null, null, true);
     }
 
+    public boolean addressIsExist() {
+        String login = list.get(0);
+        return AddressManagerImpl.getInstance().checkExist(login);
+    }
 }

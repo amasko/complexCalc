@@ -15,5 +15,6 @@ public interface AddressManager {
 
     public Address checkAddress(String login, String password);
 
+    public boolean checkExist(String login);
 
 }

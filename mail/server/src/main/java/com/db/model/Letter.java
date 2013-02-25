@@ -17,26 +17,26 @@ public class Letter {
     @Id
     @GeneratedValue
     @Column(name = "ID")
-    private Long id;
+    protected Long id;
 
     @ManyToOne
     @JoinColumn(name = "FOLDER_ID")
-    private Folder folder;
+    protected Folder folder;
 
     @Column(name = "FROMADDR")
-    private String fromAddr;
+    protected String fromAddr;
 
     @Column(name = "TOADDR")
-    private String toAddr;
+    protected String toAddr;
 
     @Column(name = "CREATED")
-    private String created;
+    protected String created;
 
     @Column(name = "THEME")
-    private String theme;
+    protected String theme;
 
     @Column(name = "LETTERBODY")
-    private String body;
+    protected String body;
 
     public Long getId() {
         return id;

@@ -33,6 +33,13 @@ public class RequestHandler {
             case CHECK_LOGIN:
                 return (new ApplyLoginCheck(list)).checkLogin();
 
+            case  CHECK_REGISRTY:
+                if (new ApplyLoginCheck(list).addressIsExist()) {
+                    return new Response(null, null, false);
+                }else{
+                    (new ApplyAccountCreate(list)).accountCreate();
+                    return new Response(null, null, true);
+                }
         }
 
         return new Response(null,null,false);

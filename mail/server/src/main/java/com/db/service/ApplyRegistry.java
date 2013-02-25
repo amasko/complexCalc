@@ -1,12 +1,13 @@
-package com.frames;
+package com.db.service;
 
 /**
  * Created with IntelliJ IDEA.
  * User: Alex
- * Date: 24.02.13
- * Time: 0:43
+ * Date: 25.02.13
+ * Time: 13:55
  * To change this template use File | Settings | File Templates.
  */
-public class AccountCreateForm {
+public class ApplyRegistry {
+
 
 }

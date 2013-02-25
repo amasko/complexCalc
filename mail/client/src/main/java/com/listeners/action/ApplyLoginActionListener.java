@@ -31,6 +31,7 @@ public class ApplyLoginActionListener implements ActionListener {
     @Override
 
     public void actionPerformed(ActionEvent e) {
+
         Response response = null;
         if (loginForm.getLoginValue().length() < 1
                 || loginForm.getPasswordValue().length() < 1) {
@@ -48,7 +49,7 @@ public class ApplyLoginActionListener implements ActionListener {
             } catch (IOException e1) {
                 e1.printStackTrace();
             }
-            if (response != null && response.getSuccess()== false) {
+            if (response != null && response.getSuccess() == false) {
                 JOptionPane.showMessageDialog(loginForm,
                         "Incorrect login or password",
                         "Failed to log in", JOptionPane.ERROR_MESSAGE);

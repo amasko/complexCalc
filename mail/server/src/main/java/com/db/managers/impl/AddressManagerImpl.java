@@ -36,6 +36,7 @@ public class AddressManagerImpl implements AddressManager {
 
     @Override
     public Address checkAddress(String login, String password) {
+
         EntityManager em = JPAUtil.getEmf().createEntityManager();
         EntityTransaction transaction = em.getTransaction();
         transaction.begin();
@@ -59,6 +60,30 @@ public class AddressManagerImpl implements AddressManager {
         transaction.commit();
         em.close();
         return (isQuery) ? ad : null;
+    }
+
+    @Override
+    public boolean checkExist(String login) {
+
+        EntityManager em = JPAUtil.getEmf().createEntityManager();
+        EntityTransaction transaction = em.getTransaction();
+        transaction.begin();
+        CriteriaBuilder cb = em.getCriteriaBuilder();
+        CriteriaQuery<Address> c = cb.createQuery(Address.class);
+        Root<Address> addressRoot = c.from(Address.class);
+        c.where(cb.equal(addressRoot.get(Address_.addr), login + "@mailbox.ru"));
+        //Address ad = null;
+        boolean isQuery = true;
+        try {
+            em.createQuery(c).getSingleResult();
+        } catch (javax.persistence.NoResultException e) {
+            isQuery = false;
+        }
+
+        transaction.commit();
+        em.close();
+        return isQuery;
+
     }
 
     public static AddressManagerImpl getInstance() {

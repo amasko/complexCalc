@@ -10,6 +10,7 @@ package com;
 public enum RequestCriteria {
     CREATE_ACCOUNT,
     CHECK_LOGIN,
+    CHECK_REGISRTY,
     CREATE_FOLDER,
     REMOVE_FOLDER,
     SEND_LETTER,

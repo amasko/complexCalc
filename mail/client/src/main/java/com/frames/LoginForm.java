@@ -1,5 +1,6 @@
 package com.frames;
 
+import com.Application;
 import com.listeners.action.ApplyLoginActionListener;
 
 import java.awt.*;
@@ -41,21 +42,6 @@ public class LoginForm extends JFrame{
         GridBagLayout layout = new GridBagLayout();
         loginPanel.setLayout(layout);
 
-//        JLabel typeLabel = new JLabel("Type:");
-//        constraints = new GridBagConstraints();
-//        constraints.anchor = GridBagConstraints.EAST;
-//        constraints.insets = new Insets(5, 5, 0, 0);
-//        layout.setConstraints(typeLabel, constraints);
-//        loginPanel.add(typeLabel);
-//        typeComboBox = new JComboBox(TYPES);
-//        constraints = new GridBagConstraints();
-//        constraints.anchor = GridBagConstraints.WEST;
-//        constraints.gridwidth = GridBagConstraints.REMAINDER;
-//        constraints.insets = new Insets(5, 5, 0, 5);
-//        constraints.weightx = 1.0D;
-//        layout.setConstraints(typeComboBox, constraints);
-//        settingsPanel.add(typeComboBox);
-
         JLabel loginLabel = new JLabel("Login:");
         constraints = new GridBagConstraints();
         constraints.anchor = GridBagConstraints.EAST;
@@ -64,26 +50,13 @@ public class LoginForm extends JFrame{
         loginPanel.add(loginLabel);
         loginField = new JTextField(25);
         constraints = new GridBagConstraints();
+        constraints.anchor = GridBagConstraints.WEST;
+        constraints.fill = GridBagConstraints.HORIZONTAL;
         constraints.gridwidth = GridBagConstraints.REMAINDER;
         constraints.insets = new Insets(5, 5, 0, 5);
         constraints.weightx = 1.0D;
         layout.setConstraints(loginField, constraints);
         loginPanel.add(loginField);
-//        JLabel usernameLabel = new JLabel("Username:");
-//        constraints = new GridBagConstraints();
-//        constraints.anchor = GridBagConstraints.EAST;
-//        constraints.insets = new Insets(5, 5, 0, 0);
-//        layout.setConstraints(usernameLabel, constraints);
-//        settingsPanel.add(usernameLabel);
-//        usernameTextField = new JTextField();
-//        constraints = new GridBagConstraints();
-//        constraints.anchor = GridBagConstraints.WEST;
-//        constraints.fill = GridBagConstraints.HORIZONTAL;
-//        constraints.gridwidth = GridBagConstraints.REMAINDER;
-//        constraints.insets = new Insets(5, 5, 0, 5);
-//        constraints.weightx = 1.0D;
-//        layout.setConstraints(usernameTextField, constraints);
-//        settingsPanel.add(usernameTextField);
 
         JLabel passwordLabel = new JLabel("Password:");
         constraints = new GridBagConstraints();
@@ -100,24 +73,11 @@ public class LoginForm extends JFrame{
         constraints.weightx = 1.0D;
         layout.setConstraints(passwordField, constraints);
         loginPanel.add(passwordField);
-//        JLabel smtpServerLabel = new JLabel("SMTP Server:");
-//        constraints = new GridBagConstraints();
-//        constraints.anchor = GridBagConstraints.EAST;
-//        constraints.insets = new Insets(5, 5, 5, 0);
-//        layout.setConstraints(smtpServerLabel, constraints);
-//        settingsPanel.add(smtpServerLabel);
-//        smtpServerTextField = new JTextField(25);
-//        constraints = new GridBagConstraints();
-//        constraints.gridwidth = GridBagConstraints.REMAINDER;
-//        constraints.insets = new Insets(5, 5, 5, 5);
-//        constraints.weightx = 1.0D;
-//        layout.setConstraints(smtpServerTextField, constraints);
-//        settingsPanel.add(smtpServerTextField);
 
         // Setup buttons panel.
         JPanel buttonsPanel = new JPanel();
 
-        JButton connectButton = new JButton("Accept");
+        JButton connectButton = new JButton("Submit");
         connectButton.addActionListener(new ApplyLoginActionListener(this));
         buttonsPanel.add(connectButton);
 
@@ -133,7 +93,8 @@ public class LoginForm extends JFrame{
         JButton createButton = new JButton("Create");
         createButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                //actionCancel();
+                Application.initRegFrame();
+                dispose();
             }
         });
         buttonsPanel.add(createButton);
@@ -145,7 +106,6 @@ public class LoginForm extends JFrame{
 
         // Size dialog to components.
         pack();
-
     }
 
     // Cancel connecting and exit program.

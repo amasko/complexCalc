@@ -5,15 +5,10 @@ import com.db.managers.impl.UserManagerImpl;
 import com.db.model.Address;
 import com.db.model.User;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
-/**
- * Created with IntelliJ IDEA.
- * User: Alex
- * Date: 21.02.13
- * Time: 13:07
- * To change this template use File | Settings | File Templates.
- */
 public class ApplyAccountCreate {
 
     private List<String> list;
@@ -26,14 +21,16 @@ public class ApplyAccountCreate {
 
         User user = new User();
         Address address = new Address();
-        //user.setAddress(login+"dfg");
-        String name = list.get(0);
-        String surname = list.get(1);
-        String birthDate = list.get(2);
-        String phone = list.get(3);
-        String login = list.get(4);
-        String pass = list.get(5);
-        String creation = list.get(6);
+
+        String login = list.get(0);
+        String pass = list.get(1);
+        String name = list.get(2);
+        String surname = list.get(3);
+        String phone = list.get(4);
+        String birthDate = list.get(5);
+
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("hh:mm ' on' MMMM dd yyyy");
+        String dateAsString = simpleDateFormat.format(new Date());
 
         user.setName(name);
         user.setSurname(surname);
@@ -42,8 +39,8 @@ public class ApplyAccountCreate {
 
         address.setAddr(login + "@mailbox.ru");
         address.setPassword(pass);
+        address.setCreationDate(dateAsString);
         address.setUser(user);
-        address.setCreationDate(creation);
 
         UserManagerImpl.getInstance().create(user);
         AddressManagerImpl.getInstance().create(address);
