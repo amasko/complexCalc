@@ -21,7 +21,7 @@ public class ServerConnect {
      * @return
      * @throws IOException
      */
-    public static Response connect(Request request) throws IOException{
+    public static synchronized Response connect(Request request) throws IOException{
 
         Response response = null;
 

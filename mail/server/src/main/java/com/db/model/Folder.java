@@ -32,7 +32,6 @@ public class Folder {
     private List<Letter> letters;
 
 //    fetch = FetchType.EAGER,
-    //☺
     public List<Letter> getLetters() {
         return letters;
     }

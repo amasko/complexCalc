@@ -1,25 +1,36 @@
 package com.frames.tables;
 
+import com.*;
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import java.util.ArrayList;
+import java.util.List;
 
-/**
- * Created with IntelliJ IDEA.
- * User: Alex
- * Date: 25.02.13
- * Time: 15:37
- * To change this template use File | Settings | File Templates.
- */
-public class IncomingTableLoader extends SwingWorker<Void, Void> {
+public class IncomingTableLoader extends SwingWorker<Void, MailBox> {
 
-    DefaultTableModel incomingTableModel;
+    private DefaultTableModel incomingTableModel;
+    String login;
 
-    public IncomingTableLoader(DefaultTableModel incommingTableModel) {
-        this.incomingTableModel = incommingTableModel;
+    public IncomingTableLoader(DefaultTableModel incomingTableModel, String login) {
+        this.incomingTableModel = incomingTableModel;
+        this.login = login;
     }
 
     @Override
     protected Void doInBackground() throws Exception {
+        List<String> addr = new ArrayList<String>();
+        addr.add(login);
+        addr.add("inbox");
+        Request request = new Request(RequestCriteria.GET_INBOX_LETTERS_LIST, addr);
+        Response response = null;
+        response = ServerConnect.connect(request);
+        List<Object> objects = response.getObjList();
+        for (Object obj : objects) {
+            MailBox mailBox = (MailBox) obj;
+            System.out.println(mailBox);
+        }
+
 
         return null;
     }

@@ -23,7 +23,8 @@
         <mysql.connector.version>5.1.22</mysql.connector.version>
         <javax.persistence.version>1.0</javax.persistence.version>
         <common.codec.version>1.7</common.codec.version>
-
+        <log4j.version>1.2.17</log4j.version>
+        <junit.version>4.8.1</junit.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -35,18 +36,23 @@
                 <version>${org.hibernate.version}</version>
             </dependency>
 
-            <!--Javax persistence API-->
-            <!--<dependency>-->
-                <!--<groupId>javax.persistence</groupId>-->
-                <!--<artifactId>persistence-api</artifactId>-->
-                <!--<version>${javax.persistence.version}</version>-->
-            <!--</dependency>-->
+            <dependency>
+                <groupId>log4j</groupId>
+                <artifactId>log4j</artifactId>
+                <version>${log4j.version}</version>
+            </dependency>
 
             <!-- MySQL database driver -->
             <dependency>
                 <groupId>mysql</groupId>
                 <artifactId>mysql-connector-java</artifactId>
                 <version>${mysql.connector.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+                <scope>test</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>

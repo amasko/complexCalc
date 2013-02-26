@@ -14,6 +14,7 @@ public class Response implements Serializable {
 
     private RequestCriteria requestCriteria;
     private List<String> list;
+    private List<Object> objList;
     private Boolean success = false;
 
     public Response(RequestCriteria requestCriteria, List<String> list, Boolean success) {
@@ -50,4 +51,12 @@ public class Response implements Serializable {
         return requestCriteria.toString() + "test ;";
     }
 
+    public void setObjList(List<Object> objList) {
+        this.objList = objList;
+    }
+
+    public List<Object> getObjList() {
+
+        return objList;
+    }
 }

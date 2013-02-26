@@ -7,13 +7,6 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-/**
- * Created with IntelliJ IDEA.
- * User: Alex
- * Date: 23.02.13
- * Time: 22:23
- * To change this template use File | Settings | File Templates.
- */
 public class LoginForm extends JFrame{
 
     private JTextField loginField;

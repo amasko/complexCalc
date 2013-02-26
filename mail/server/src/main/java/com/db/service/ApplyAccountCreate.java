@@ -8,6 +8,7 @@ import com.db.model.User;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class ApplyAccountCreate {
 
@@ -29,7 +30,7 @@ public class ApplyAccountCreate {
         String phone = list.get(4);
         String birthDate = list.get(5);
 
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("hh:mm ' on' MMMM dd yyyy");
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("hh:mm ' on' MMMM dd yyyy", Locale.ENGLISH);
         String dateAsString = simpleDateFormat.format(new Date());
 
         user.setName(name);

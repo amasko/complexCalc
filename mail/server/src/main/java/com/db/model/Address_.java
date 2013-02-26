@@ -1,9 +1,5 @@
 package com.db.model;
 
-import com.db.model.Address;
-import com.db.model.Folder;
-import com.db.model.User;
-
 import javax.persistence.metamodel.ListAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;

@@ -11,6 +11,7 @@ public enum RequestCriteria {
     CREATE_ACCOUNT,
     CHECK_LOGIN,
     CHECK_REGISRTY,
+    GET_INBOX_LETTERS_LIST,
     CREATE_FOLDER,
     REMOVE_FOLDER,
     SEND_LETTER,

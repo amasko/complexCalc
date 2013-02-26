@@ -1,18 +1,25 @@
 package com.db.model;
 
-import javax.persistence.*;
+import com.MailBox;
 
-/**
- * Created with IntelliJ IDEA.
- * User: Alex
- * Date: 19.02.13
- * Time: 18:55
- * To change this template use File | Settings | File Templates.
- */
+import javax.persistence.*;
 
 @Entity
 @Table(name = "LETTERS")
 public class Letter {
+
+    public Letter() {
+
+    }
+
+    public Letter(MailBox mail) {
+        id = mail.getId();
+        fromAddr = mail.getFrom();
+        toAddr = mail.getTo();
+        created = mail.getCreated();
+        theme = mail.getTheme();
+        body = mail.getBody();
+    }
 
     @Id
     @GeneratedValue
@@ -92,5 +99,16 @@ public class Letter {
 
     public void setBody(String body) {
         this.body = body;
+    }
+
+    public MailBox returnMailBox() {
+
+        MailBox mailbox = new MailBox(id,created,theme,body,fromAddr,toAddr);
+        return mailbox;
+    }
+
+    @Override
+    public String toString() {
+        return id+"; ";
     }
 }

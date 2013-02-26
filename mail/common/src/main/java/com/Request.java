@@ -3,17 +3,11 @@ package com;
 import java.io.Serializable;
 import java.util.List;
 
-/**
- * Created with IntelliJ IDEA.
- * User: Alex
- * Date: 13.02.13
- * Time: 13:25
- * To change this template use File | Settings | File Templates.
- */
 public class Request implements Serializable {
 
     private RequestCriteria requestCriteria;
     private List<String> list;
+    private List<Object> objList;
 
     public Request(RequestCriteria requestCriteria, List<String> list) {
         this.requestCriteria = requestCriteria;
@@ -28,6 +22,16 @@ public class Request implements Serializable {
         return list;
     }
     //test string representation
+
+    public void setObjList(List<Object> objList) {
+        this.objList = objList;
+    }
+
+    public List<Object> getObjList() {
+
+        return objList;
+    }
+
     @Override
     public String toString() {
         return requestCriteria.toString()+"I'm a request"+ " ;";

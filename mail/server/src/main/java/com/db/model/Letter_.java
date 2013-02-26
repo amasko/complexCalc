@@ -1,16 +1,7 @@
 package com.db.model;
 
-import javax.persistence.metamodel.ListAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
-
-/**
- * Created with IntelliJ IDEA.
- * User: Alex
- * Date: 25.02.13
- * Time: 15:06
- * To change this template use File | Settings | File Templates.
- */
 
 @StaticMetamodel(Letter.class)
 public class Letter_ {

@@ -22,6 +22,9 @@ public class AddressManagerImpl implements AddressManager {
 
     private static AddressManagerImpl instance = new AddressManagerImpl();
 
+    private AddressManagerImpl() {
+    }
+
     @Override
     public void create(Address address) {
 

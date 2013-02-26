@@ -4,12 +4,9 @@ package com.db.managers.impl;
 import com.db.JPAUtil;
 import com.db.managers.UserManager;
 import com.db.model.User;
-import org.apache.commons.codec.digest.DigestUtils;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
 
 public class UserManagerImpl implements UserManager {
 

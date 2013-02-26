@@ -2,24 +2,20 @@ package com;
 
 import com.db.service.ApplyAccountCreate;
 import com.db.service.ApplyLoginCheck;
+import com.db.service.LetterService;
+import org.apache.log4j.Logger;
 
 import java.util.List;
 
-/**
- * Created with IntelliJ IDEA.
- * User: Alex
- * Date: 21.02.13
- * Time: 13:58
- * To change this template use File | Settings | File Templates.
- */
 public class RequestHandler {
-
+    private final static Logger LOG = Logger.getLogger(RequestHandler.class);
     private RequestCriteria criteria;
     private List<String> list;
-
+    private List<Object> objList;
     public RequestHandler(Request request) {
         criteria = request.getRequestCriteria();
         list = request.getList();
+        objList = request.getObjList();
     }
 
     public Response handleRequest() {
@@ -40,6 +36,14 @@ public class RequestHandler {
                     (new ApplyAccountCreate(list)).accountCreate();
                     return new Response(null, null, true);
                 }
+            case SEND_LETTER:
+                new LetterService().storeLetter(objList);
+                return new Response(null, null, true);
+
+            case GET_INBOX_LETTERS_LIST:
+                return (new LetterService().getListLetters(list.get(0), list.get(1)));
+
+
         }
 
         return new Response(null,null,false);

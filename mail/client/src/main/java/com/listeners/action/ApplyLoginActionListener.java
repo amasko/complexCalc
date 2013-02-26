@@ -1,9 +1,6 @@
 package com.listeners.action;
 
-import com.Request;
-import com.RequestCriteria;
-import com.Response;
-import com.ServerConnect;
+import com.*;
 import com.frames.LoginForm;
 
 import javax.swing.*;
@@ -54,10 +51,10 @@ public class ApplyLoginActionListener implements ActionListener {
                         "Incorrect login or password",
                         "Failed to log in", JOptionPane.ERROR_MESSAGE);
             } else {
-
-                //TODO: log in to MAIN FORM
+                Application.initAppFrame();
                 System.out.println(response != null ? response.getSuccess() : null);
 
+                loginForm.dispose();
             }
         }
     }

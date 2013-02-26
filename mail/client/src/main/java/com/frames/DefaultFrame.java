@@ -1,7 +1,6 @@
 package com.frames;
 
 import com.frames.tables.IncomingTableLoader;
-
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
@@ -10,49 +9,49 @@ import java.awt.event.ActionListener;
 
 public class DefaultFrame extends JFrame {
 
-    public DefaultFrame() throws HeadlessException {
+    private String appLofin;
+    public DefaultFrame(String login) throws HeadlessException {
         super();
+        appLofin = login;
+        init();
     }
 
-    @Override
-    protected void frameInit() {
-        super.frameInit();
+    private void init() {
         this.menuInit();
+        this.mailButtonPanel();
         this.layoutInit();
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setTitle("Mail-service");
         this.setSize(640, 480);
-        this.setLocationRelativeTo(null);
-        this.setVisible(Boolean.TRUE);
-
     }
 
     private void layoutInit() {
 
         Container contentPane = this.getContentPane();
         JTabbedPane root = new JTabbedPane();
-        root.add("Incoming", createIncommingPanel());
+        root.add("Incoming", createPanel("inbox"));
+//        root.add("Outgoing", createPanel("outbox"));
+//        root.add("Recycler", createPanel("recycle"));
+        //
         contentPane.add(root);
-
     }
 
-    private JPanel createIncommingPanel() {
-        JPanel teacherPanel = new JPanel();
+    private MailPanel createPanel(String type) {
+        MailPanel panel = new MailPanel(type);
         /* Data table */
         final DefaultTableModel incomingTableModel = new DefaultTableModel(new Object[0][0], new String[]{"from","theme","when"});
-        final JTable teacherTable = new JTable(incomingTableModel);
-        JScrollPane scrollPane = new JScrollPane(teacherTable);
-        teacherTable.setFillsViewportHeight(true);
-        teacherPanel.setLayout(new BorderLayout());
-        teacherPanel.add(scrollPane, BorderLayout.CENTER);
-        IncomingTableLoader teacherTableLoader = new IncomingTableLoader(incomingTableModel);
-        teacherTableLoader.execute();
-        return teacherPanel;
+        final JTable incomingTable = new JTable(incomingTableModel);
+        JScrollPane scrollPane = new JScrollPane(incomingTable);
+        incomingTable.setFillsViewportHeight(true);
+        panel.setLayout(new BorderLayout());
+        panel.add(scrollPane, BorderLayout.CENTER);
+        IncomingTableLoader incomingTableLoader = new IncomingTableLoader(incomingTableModel, appLofin);
+        incomingTableLoader.execute();
+        return panel;
     }
 
     private void menuInit() {
         JMenuBar menuBar = new JMenuBar();
-
         /* File menu */
         JMenu fileMenu = new JMenu("File");
         JMenuItem exitFileMenu = new JMenuItem("Exit");
@@ -62,6 +61,21 @@ public class DefaultFrame extends JFrame {
         this.setJMenuBar(menuBar);
     }
 
+    private void mailButtonPanel() {
+        JPanel buttonPanel = new JPanel();
+        JButton newButton = new JButton("New Message");
+        newButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                new MessageForm();
+            }
+        });
+        buttonPanel.add(newButton);
+        this.setLocationRelativeTo(null);
+        this.setVisible(Boolean.TRUE);
+        getContentPane().add(buttonPanel, BorderLayout.NORTH);
+
+
+    }
 
     private class ExitActionListener implements ActionListener {
         @Override
