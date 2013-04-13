@@ -8,7 +8,7 @@
       xmlns:p="http://primefaces.org/ui">
 
 <head>
-    <link rel="stylesheet" type="text/css" href="../css/style.css" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
 </head>
 
 <h:body styleClass="body">
@@ -19,13 +19,13 @@
         <h:messages errorClass="errorMessage" infoClass="infoMessage"
                     warnClass="warnMessage"></h:messages>
         <h:panelGrid columns="2">
-            <h:outputText value="Username :"></h:outputText>
+            <h:outputText value="Username :">user</h:outputText>
             <h:inputText id="username" value="#{regBean.username}"
-                         required="true" requiredMessage="Please Enter Username!"></h:inputText>
+                         required="true" requiredMessage="Please Enter Username!">name</h:inputText>
 
-            <h:outputText value="Password :"></h:outputText>
+            <h:outputText value="Password :"/>
             <h:inputSecret id="password" value="#{regBean.password}"
-                           required="true" requiredMessage="Please Enter Password!"></h:inputSecret>
+                           required="true" requiredMessage="Please Enter Password!"/>
 
             <h:outputText value="Confirm Password :"></h:outputText>
             <h:inputSecret id="confirmpassword"
@@ -46,7 +46,7 @@
 
             <h:outputText value="Email :"></h:outputText>
             <h:inputText id="email" value="#{regBean.email}" required="true"
-                         requiredMessage="Please Enter Email!"></h:inputText>
+                         requiredMessage="Please Enter Email!">some</h:inputText>
 
             <h:outputText value="Confirm Email :"></h:outputText>
             <h:inputText id="confirmemail" value="#{regBean.confirmemail}"

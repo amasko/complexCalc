@@ -86,6 +86,11 @@
             <artifactId>log4j</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>org.glassfish.maven.plugin</groupId>
+            <artifactId>maven-glassfish-plugin</artifactId>
+            <version>2.1</version>
+        </dependency>
 
     </dependencies>
 
@@ -106,6 +111,29 @@
                 <artifactId>maven-resources-plugin</artifactId>
                 <configuration>
                     <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.glassfish.maven.plugin</groupId>
+                <artifactId>maven-glassfish-plugin</artifactId>
+                <configuration>
+                    <terse>false</terse>
+                    <echo>true</echo>
+                    <debug>true</debug>
+                    <glassfishDirectory>C:/glassfish3/</glassfishDirectory>
+                    <user>admin</user>
+                    <adminPassword>12345</adminPassword>
+                    <domain>
+                        <name>domain1</name>
+                        <host>localhost</host>
+                        <adminPort>4848</adminPort>
+                    </domain>
+                    <components>
+                        <component>
+                            <name>${project.artifactId}</name>
+                            <artifact>${project.build.directory}/${project.build.finalName}.war</artifact>
+                        </component>
+                    </components>
                 </configuration>
             </plugin>
             <plugin>
